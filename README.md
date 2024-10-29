@@ -75,7 +75,7 @@ HCP Pipelines（特に `BiasFieldCorrection_sqrtT1wXT2w.sh`）をインストー
 
 ./T1wT2wProcessing.sh --data-dir /path/to/data --output-dir /path/to/output --t1w-image t1w_image.nii.gz --t2w-image t2w_image.nii.gz
 
-処理の説明
+## 処理の説明
 
 強度の不均一性補正: N4BiasFieldCorrectionを使用して、T1wおよびT2w画像の強度の不均一性を補正します。
 
