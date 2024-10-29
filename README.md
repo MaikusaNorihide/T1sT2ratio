@@ -1,7 +1,7 @@
 # インストールガイドと必要要件
 
 ## 必要なパッケージ
-`brain_image_processing.sh` スクリプトを実行するために必要なパッケージは以下の通りです：
+`T1wT2wProcessing.sh` スクリプトを実行するために必要なパッケージは以下の通りです：
 
 - [ANTs](https://github.com/ANTsX/ANTs)：T2強調画像をT1強調画像に線形位置合わせするために使用します。
 - [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)：頭蓋骨除去、セグメンテーション、リサンプリングなどの操作に使用します。
