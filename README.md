@@ -52,10 +52,39 @@ HCP Pipelines（特に `BiasFieldCorrection_sqrtT1wXT2w.sh`）をインストー
 
 `/path/to/HCPpipelines` をリポジトリをクローンした適切なディレクトリに置き換えてください。
 
-## 環境の設定
-
-
- 必要なすべてのツール（`N4BiasFieldCorrection`、`antsRegistration`、`bet`、`fslmaths`、`fast`）がシステムパスにあり、実行可能であることを確認してください。
 
 
 
+# 使用方法
+
+./T1wT2wProcessing.sh [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR] --t1w-image T1W_IMAGE --t2w-image T2W_IMAGE
+
+引数
+
+--data-dir DATA_DIR: 入力データが格納されているディレクトリ（デフォルト: 現在のディレクトリ）。
+
+--output-dir OUTPUT_DIR: 出力ファイルを保存するディレクトリ（デフォルト: 現在のディレクトリ）。
+
+--t1w-image T1W_IMAGE: T1強調画像ファイル（必須）。
+
+--t2w-image T2W_IMAGE: T2強調画像ファイル（必須）。
+
+## 使用例
+
+必要なT1wおよびT2w画像を指定し、データおよび出力ディレクトリを指定してスクリプトを実行する例:
+
+./T1wT2wProcessing.sh --data-dir /path/to/data --output-dir /path/to/output --t1w-image t1w_image.nii.gz --t2w-image t2w_image.nii.gz
+
+処理の説明
+
+### 強度の不均一性補正: N4BiasFieldCorrectionを使用して、T1wおよびT2w画像の強度の不均一性を補正します。
+
+### 線形レジストレーション: ANTsを使用して、T2w画像をT1w画像にレジストレーションし、整列させます。
+
+### 頭蓋骨除去: FSLのbetコマンドを使用してT1w画像から脳領域を抽出し、バイナリマスクを作成します。
+
+### バイアスフィールド補正: BiasFieldCorrection_sqrtT1wXT2w.shスクリプトを使用してT1wとT2wのバイアスフィールド補正を適用します。
+
+### セグメンテーション: FSLのfastコマンドを使用して、T1w画像を白質および灰白質にセグメンテーションします。
+
+### スケーリングと比率計算: 組織コントラストを調べるために、sT1w/T2w比を計算します。
